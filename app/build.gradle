@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.llf.common"
+        minSdkVersion 11
+        targetSdkVersion 25
+        versionCode 11
+        versionName "1.2.8"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        resConfigs "en"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias 'common'
+            keyPassword 'commonjks'
+            storeFile file('C:/Users/A/Desktop/lib/common/common.jks')
+            storePassword 'commonjks'
+        }
+        release {
+            keyAlias 'common'
+            keyPassword 'commonjks'
+            storeFile file('C:/Users/A/Desktop/lib/common/common.jks')
+            storePassword 'commonjks'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "6g"//越大越好
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            // Zipalign优化
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // 自定义输出配置
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为xiuqu_v1.0_wandoujia.apk
+                        def fileName = "feteING_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    productFlavors {
+        c360 {}
+        yingyongbao {}
+        xiaomi {}
+        huawei {}
+        vivo {}
+        oppo {}
+        meizu {}
+        smartisan {}
+        wandoujia {}
+        lenovo {}
+        samsung {}
+        other {}
+        baidu {}
+        app {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile project(':photopicker')
+    compile project(':videomodel')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/mta-sdk-1.6.2.jar')
+    compile files('libs/open_sdk_r5788.jar')
+    compile 'com.android.support.constraint:constraint-layout:1.0.0'
+    compile 'com.android.support:support-annotations:22.2.0'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    //前置检查
+    compile 'com.google.guava:guava:18.0'
+    //在网页上查看sp和数据库 adb forward tcp:8080 tcp:8080
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+    //检查过渡绘制
+    compile 'com.jakewharton.scalpel:scalpel:1.1.2'
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item android:id="@+id/search"
+          android:icon="@drawable/ic_search_white_24dp"
+          android:title="搜索相关视频"
+          app:showAsAction="ifRoom"
+        />
+
+    <item android:id="@+id/love"
+          android:icon="@drawable/ic_playlist_play_red_50_24dp"
+          android:title="喜欢"
+          app:showAsAction="never"
+        />
+    <item android:id="@+id/share"
+          android:icon="@drawable/ic_delete_red_50_24dp"
+          android:title="分享"
+          app:showAsAction="never"
+        />
+    <item android:id="@+id/report"
+          android:icon="@drawable/ic_report_problem_red_50_24dp"
+          android:title="举报"
+          app:showAsAction="never"
+        />
+</menu>

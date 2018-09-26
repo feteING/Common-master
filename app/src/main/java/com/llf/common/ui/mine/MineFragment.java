@@ -1,6 +1,6 @@
 package com.llf.common.ui.mine;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -11,17 +11,19 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.jph.takephoto.app.TakePhoto;
+import com.jph.takephoto.model.TResult;
 import com.llf.basemodel.base.BaseFragment;
 import com.llf.basemodel.dialog.ShareDialog;
+import com.llf.basemodel.dialog.base.PromptDialog;
+import com.llf.basemodel.dialog.ios.BottomMenuDialog;
 import com.llf.basemodel.utils.AppInfoUtil;
 import com.llf.basemodel.utils.DateUtil;
-import com.llf.basemodel.utils.ImageLoaderUtils;
-import com.llf.basemodel.utils.LogUtil;
 import com.llf.common.R;
 import com.llf.common.okhttp.AppConfig;
+import com.llf.common.okhttp.base.LogTest;
 import com.llf.common.okhttp.business.BaseBusinessUtil;
-import com.llf.photopicker.ImgSelConfig;
-import com.llf.photopicker.PickPhotoActivity;
+import com.llf.common.tools.helper.PhotoHelper;
 import com.tencent.connect.common.Constants;
 import com.tencent.connect.share.QQShare;
 import com.tencent.mm.sdk.openapi.IWXAPI;
@@ -33,14 +35,9 @@ import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 import static com.tencent.mm.sdk.platformtools.Util.bmpToByteArray;
 
@@ -61,7 +58,7 @@ public class MineFragment extends BaseFragment implements IUiListener, ShareDial
     @Bind(R.id.img_share)
     ImageView mImgShare;
 
-    private static final int CHANGE_AVATAIR = 1;
+
     private Tencent mTencent;
     private IWXAPI iwxapi;
 
@@ -104,7 +101,6 @@ public class MineFragment extends BaseFragment implements IUiListener, ShareDial
                 startActivity(AttentionActivity.class);
                 break;
             case R.id.track:
-                startActivity(TrackActivity.class);
                 break;
             case R.id.share:
                 ShareDialog.show(getActivity(), this);
@@ -136,9 +132,42 @@ public class MineFragment extends BaseFragment implements IUiListener, ShareDial
                 }
                 break;
             case R.id.avatar:
-                PickPhotoActivity.startActivity(this, new ImgSelConfig.Builder().multiSelect(false).build(), CHANGE_AVATAIR);
+//                PickPhotoActivity.startActivity(this, new ImgSelConfig.Builder().multiSelect(false).build(), CHANGE_AVATAIR);
+                final TakePhoto takePhoto = getTakePhoto();
+                BottomMenuDialog dialog = new BottomMenuDialog.BottomMenuBuilder()
+                        .addItem("拍照", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                PhotoHelper.getInstance().doPhoto(0, takePhoto);
+                            }
+                        })
+                        .addItem("相册中选择", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                PhotoHelper.getInstance().doPhoto(1, takePhoto);
+                            }
+                        })
+                        .addItem("取消", null).build();
+                dialog.show(getFragmentManager());
                 break;
             case R.id.rbt_msg:
+//                new PromptDialog.Builder(getActivity()).hintShow("我试试");
+
+                new PromptDialog.Builder(getActivity()).setMessage("确认删除么!").setTitle("提示")
+                        .setButton2("取消", new PromptDialog.OnClickListener() {
+
+                            @Override
+                            public void onClick(Dialog dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setButton1("确定", new PromptDialog.OnClickListener() {
+                            @Override
+                            public void onClick(Dialog dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).show();
+
                 break;
             default:
                 break;
@@ -148,34 +177,7 @@ public class MineFragment extends BaseFragment implements IUiListener, ShareDial
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CHANGE_AVATAIR && resultCode == Activity.RESULT_OK) {
-            ArrayList<String> result = data.getStringArrayListExtra(PickPhotoActivity.INTENT_RESULT);
-            if (result.size() != 0) {
-                ImageLoaderUtils.displayCircle(getActivity(), mAvatar, result.get(0));
 
-                final File file = new File(result.get(0));
-                Luban.get(getActivity())
-                        .load(file)                     //传人要压缩的图片
-                        .putGear(Luban.THIRD_GEAR)      //设定压缩档次，默认三挡
-                        .setCompressListener(new OnCompressListener() { //设置回调
-
-                            @Override
-                            public void onStart() {
-                                LogUtil.d("压缩之前的图片大小" + file.length());
-                            }
-
-                            @Override
-                            public void onSuccess(File file) {
-                                LogUtil.d("压缩之后的图片大小" + file.length());
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                LogUtil.d("压缩出错了" + e.getMessage());
-                            }
-                        }).launch();    //启动压缩
-            }
-        }
 
         if (requestCode == Constants.REQUEST_QQ_SHARE) {
             Tencent.onActivityResultData(requestCode, resultCode, data, this);
@@ -240,5 +242,22 @@ public class MineFragment extends BaseFragment implements IUiListener, ShareDial
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+
+    @Override
+    public void takeCancel() {
+        super.takeCancel();
+    }
+
+    @Override
+    public void takeFail(TResult result, String msg) {
+        super.takeFail(result, msg);
+    }
+
+    @Override
+    public void takeSuccess(TResult result) {
+        super.takeSuccess(result);
+        LogTest.e(result.getImage().getOriginalPath() + "");
     }
 }

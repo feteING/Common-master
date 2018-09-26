@@ -1,1 +1,1 @@
-include ':app', ':basemodel', ':photopicker', ':videomodel'
+include ':app', ':basemodel'

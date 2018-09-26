@@ -15,10 +15,7 @@ import com.llf.basemodel.base.BaseFragment;
 import com.llf.basemodel.base.BaseFragmentAdapter;
 import com.llf.basemodel.utils.FileUtil;
 import com.llf.common.okhttp.business.BaseBusinessUtil;
-import com.llf.common.ui.girl.GirlFragment;
 import com.llf.common.ui.mine.MineFragment;
-import com.llf.common.ui.news.NewsFragment;
-import com.llf.common.ui.video.VideoFragment;
 
 import java.io.File;
 
@@ -84,9 +81,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     protected void initView() {
         mTitles = getResources().getStringArray(R.array.main_titles);
         fragments = new BaseFragment[mTitles.length];
-        fragments[0] = NewsFragment.getInstance();
-        fragments[1] = VideoFragment.getInstance();
-        fragments[2] = GirlFragment.getInstance();
+        fragments[0] = MineFragment.getInstance();
+        fragments[1] = MineFragment.getInstance();
+        fragments[2] = MineFragment.getInstance();
         fragments[3] = MineFragment.getInstance();
         BaseFragmentAdapter mAdapter = new BaseFragmentAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(mAdapter);

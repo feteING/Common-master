@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.llf.common"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 25
-        versionCode 11
-        versionName "1.2.8"
+        versionCode 1
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         resConfigs "en"
@@ -17,7 +17,9 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a'
         }
     }
-
+    lintOptions {
+        disable 'MissingTranslation'
+    }
     signingConfigs {
         debug {
             keyAlias 'common'
@@ -98,8 +100,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    compile project(':photopicker')
-    compile project(':videomodel')
     compile files('libs/libammsdk.jar')
     compile files('libs/mta-sdk-1.6.2.jar')
     compile files('libs/open_sdk_r5788.jar')
@@ -112,4 +112,5 @@ dependencies {
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
     //检查过渡绘制
     compile 'com.jakewharton.scalpel:scalpel:1.1.2'
+    compile project(':basemodel')
 }

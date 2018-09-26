@@ -1,11 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -78,4 +78,6 @@ dependencies {
     compile 'com.hyman:flowlayout-lib:1.1.2'
     //fastjson
     compile 'com.alibaba:fastjson:1.1.59.android'
+    //takephoto
+    compile 'com.jph.takephoto:takephoto_library:4.0.3'
 }

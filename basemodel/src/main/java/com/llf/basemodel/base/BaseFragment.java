@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jph.takephoto.app.TakePhotoFragment;
 import com.llf.basemodel.R;
 import com.llf.basemodel.dialog.DialogTools;
 import com.llf.basemodel.utils.ToastUtil;
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  * 基础的Fragment
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends TakePhotoFragment {
     private boolean isViewPrepared; // 标识fragment视图已经初始化完毕
     private boolean hasFetchData; // 标识已经触发过懒加载数据
 

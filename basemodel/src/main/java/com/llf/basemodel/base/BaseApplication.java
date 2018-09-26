@@ -30,6 +30,8 @@ public class BaseApplication extends MultiDexApplication {
         CrashReport.initCrashReport(getApplicationContext());
         //检查内存泄漏
         refWatcher = LeakCanary.install(this);
+        //bugly
+        CrashReport.initCrashReport(getApplicationContext(), "2b5ae88355", true);
         LogUtil.init();
     }
 

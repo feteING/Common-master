@@ -7,7 +7,7 @@
               android:gravity="center"
               android:visibility="invisible"
     >
-    <com.llf.basemodel.recycleview.LoadingView
+    <com.fete.basemodel.recycleview.LoadingView
         android:layout_width="32dp"
         android:layout_height="32dp"/>
     <TextView

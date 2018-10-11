@@ -23,7 +23,7 @@
         <attr name="topLeftRadius" format="dimension"></attr>
         <attr name="topRightRadius" format="dimension"></attr>
         <attr name="bottomLeftRadius" format="dimension"></attr>
-        <attr name="bottomRightRadius" format="dimension"/>
+        <attr name="bottomRightRadius" format="dimension" />
         <attr name="shapeTpe" format="enum">
             <enum name="rectangle" value="0"></enum>
             <enum name="oval" value="1"></enum>
@@ -32,22 +32,63 @@
 
     <!--下拉筛选-->
     <declare-styleable name="DropDownMenu">
-        <attr name="ddunderlineColor" format="color"/>
-        <attr name="dddividerColor" format="color"/>
-        <attr name="ddtextSelectedColor" format="color"/>
-        <attr name="ddtextUnselectedColor" format="color"/>
-        <attr name="ddmenuBackgroundColor" format="color"/>
-        <attr name="ddmaskColor" format="color"/>
-        <attr name="ddmenuTextSize" format="dimension"/>
-        <attr name="ddmenuSelectedIcon" format="reference"/>
-        <attr name="ddmenuUnselectedIcon" format="reference"/>
+        <attr name="ddunderlineColor" format="color" />
+        <attr name="dddividerColor" format="color" />
+        <attr name="ddtextSelectedColor" format="color" />
+        <attr name="ddtextUnselectedColor" format="color" />
+        <attr name="ddmenuBackgroundColor" format="color" />
+        <attr name="ddmaskColor" format="color" />
+        <attr name="ddmenuTextSize" format="dimension" />
+        <attr name="ddmenuSelectedIcon" format="reference" />
+        <attr name="ddmenuUnselectedIcon" format="reference" />
     </declare-styleable>
 
     <!--通用的头部-->
     <declare-styleable name="NormalTitleBar">
-        <attr name="content" format="string"/>
-        <attr name="rightContent" format="string"/>
-        <attr name="leftState" format="boolean"/>
-        <attr name="backgroudColor" format="color"/>
+        <attr name="content" format="string" />
+        <attr name="rightContent" format="string" />
+        <attr name="leftState" format="boolean" />
+        <attr name="backgroudColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="RotateLoading">
+        <attr name="loading_width" format="dimension" />
+        <attr name="loading_color" format="color" />
+        <attr name="shadow_position" format="integer" />
+        <attr name="loading_speed" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="CradleBall">
+        <attr name="cradle_ball_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="SpinnerLoader">
+        <attr name="point_color" format="color" />
+        <attr name="isdynamic" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BounceScrollView">
+        <attr name="damping" format="float" />
+        <attr name="scrollOrientation" format="enum">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
+        <attr name="incrementalDamping" format="boolean" />
+        <attr name="bounceDelay" format="integer" />
+        <attr name="triggerOverScrollThreshold" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="PaperButton">
+        <attr name="paper_text" format="string" />
+        <attr name="paper_text_size" format="dimension" />
+        <attr name="paper_text_color" format="color" />
+        <attr name="paper_font" format="string" />
+        <attr name="paper_color" format="color" />
+        <attr name="paper_corner_radius" format="dimension" />
+        <attr name="paper_shadow_radius" format="float" />
+        <attr name="paper_shadow_offset_x" format="float" />
+        <attr name="paper_shadow_offset_y" format="float" />
+        <attr name="paper_shadow_color" format="color" />
+    </declare-styleable>
+
 </resources>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/dialog1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="提示弹框" />
+
+                    <Button
+                        android:id="@+id/dialog2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="按钮弹框" />
+
+                    <Button
+                        android:id="@+id/dialog3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="头像" />
+
+                    <Button
+                        android:id="@+id/dialog4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="更新" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/show_empty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="空布局" />
+
+                    <Button
+                        android:id="@+id/show_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="错误布局" />
+
+                    <Button
+                        android:id="@+id/show_load"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="加载布局" />
+
+                    <Button
+                        android:id="@+id/show_nonet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="没网" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/fragment_push"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="布局添加" />
+
+                    <Button
+                        android:id="@+id/fragment_pop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="删除" />
+
+                    <Button
+                        android:id="@+id/fragment_replace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="替换" />
+
+                    <Button
+                        android:id="@+id/fragment_clear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="清除" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="loading" />
+
+                    <Button
+                        android:id="@+id/refresh_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="toolbar" />
+
+                    <Button
+                        android:id="@+id/scrollview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="scroll" />
+
+                    <Button
+                        android:id="@+id/location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="location" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/refresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="refresh" />
+
+
+                </LinearLayout>
+
+
+                <common.feteing.commonutils.bannner.BGABanner
+                    android:id="@+id/banner_normal"
+                    style="@style/BannerDefaultStyle"
+                    android:scaleType="fitXY"
+                    app:banner_transitionEffect="cube" />
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="bottom" />
+</FrameLayout>

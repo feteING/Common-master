@@ -1,0 +1,63 @@
+<resources>
+
+    <style name="BannerDefaultStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">182dp</item>
+ <!--       <item name="android:layout_marginTop">10dp</item>-->
+        <!-- 自定义属性在styles.xml中不需要命名空间,直接用属性名就可以了 -->
+        <!-- 开启自动轮播 -->
+        <item name="banner_pointAutoPlayAble">true</item>
+        <!-- 自动轮播的时间间隔 -->
+        <item name="banner_pointAutoPlayInterval">3000</item>
+        <!-- 指示点容器背景 -->
+        <item name="banner_pointContainerBackground">@android:color/transparent</item>
+        <!-- 指示点背景 -->
+        <item name="banner_pointDrawable">@drawable/bga_banner_selector_point_type</item>
+        <!-- 指示点容器左右内间距 -->
+        <item name="banner_pointContainerLeftRightPadding">10dp</item>
+        <!-- 指示点上下外间距 -->
+        <item name="banner_pointTopBottomMargin">6dp</item>
+        <!-- 指示点左右外间距 -->
+        <item name="banner_pointLeftRightMargin">3dp</item>
+        <!-- 指示器的位置 -->
+        <item name="banner_indicatorGravity">bottom|center_horizontal</item>
+        <!-- 页码切换过程的时间长度 -->
+        <item name="banner_pageChangeDuration">800</item>
+        <!-- 提示文案的文字大小 -->
+        <item name="banner_tipTextSize">10sp</item>
+        <!-- 提示文案的文字颜色 -->
+        <item name="banner_tipTextColor">@android:color/transparent</item>
+        <!-- 加载网络数据时覆盖在BGABanner最上层的占位图 -->
+      <!--  <item name="banner_placeholderDrawable">@drawable/holder</item>-->
+    </style>
+
+    <declare-styleable name="CountDownView">
+        <attr name="cdv_range_max" format="enum">
+            <enum name="millisecond" value="0" />
+            <enum name="second" value="1" />
+            <enum name="minute" value="2" />
+            <enum name="hour" value="3" />
+            <enum name="day" value="4" />
+        </attr>
+        <attr name="cdv_range_min" format="enum">
+            <enum name="millisecond" value="0" />
+            <enum name="second" value="1" />
+            <enum name="minute" value="2" />
+            <enum name="hour" value="3" />
+            <enum name="day" value="4" />
+        </attr>
+        <attr name="cdv_number_size" format="dimension" />
+        <attr name="cdv_number_color" format="color" />
+        <attr name="cdv_number_background" format="color" />
+        <attr name="cdv_number_width" format="dimension" />
+        <attr name="cdv_number_height" format="dimension" />
+        <attr name="cdv_number_round" format="dimension" />
+        <attr name="cdv_unit_size" format="dimension" />
+        <attr name="cdv_unit_color" format="color" />
+        <attr name="cdv_unit_background" format="color" />
+        <attr name="cdv_unit_width" format="dimension" />
+        <attr name="cdv_unit_height" format="dimension" />
+        <attr name="cdv_unit_round" format="dimension" />
+    </declare-styleable>
+
+</resources>

@@ -4,14 +4,15 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.llf.common"
-        minSdkVersion 14
+        applicationId "com.fete.common"
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         resConfigs "en"
+        multiDexEnabled true
         ndk {
             // 设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a'
@@ -42,7 +43,7 @@ android {
     dexOptions {
         dexInProcess true
         preDexLibraries true
-        javaMaxHeapSize "6g"//越大越好
+        javaMaxHeapSize "4g"//越大越好
     }
     buildTypes {
         release {
@@ -52,6 +53,10 @@ android {
             shrinkResources true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            ndk {
+                abiFilters "armeabi", "armeabi-v7a", "x86", "mips", "arm64-v8a"
+            }
 
             // 自定义输出配置
             applicationVariants.all { variant ->
@@ -92,6 +97,18 @@ android {
     productFlavors.all {
         flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
     }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties' // will not include NOTICE file
+/*        exclude 'META-INF/LICENSE' // will not include LICENSE file
+        // as noted by @Vishnuvathsan you may also need to include
+        // variations on the file name. It depends on your dependencies.
+        // Some other common variations on notice and license file names
+        exclude 'META-INF/notice'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license'
+        exclude 'META-INF/license.txt'*/
+    }
 }
 
 dependencies {
@@ -100,17 +117,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    compile files('libs/libammsdk.jar')
-    compile files('libs/mta-sdk-1.6.2.jar')
-    compile files('libs/open_sdk_r5788.jar')
+
     compile 'com.android.support.constraint:constraint-layout:1.0.0'
     compile 'com.android.support:support-annotations:22.2.0'
-    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
-    //前置检查
-    compile 'com.google.guava:guava:18.0'
     //在网页上查看sp和数据库 adb forward tcp:8080 tcp:8080
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
-    //检查过渡绘制
-    compile 'com.jakewharton.scalpel:scalpel:1.1.2'
     compile project(':basemodel')
+    compile project(':commonutils')
 }

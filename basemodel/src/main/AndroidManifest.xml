@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.llf.basemodel">
+    package="com.fete.basemodel">
     <!--敏感权限-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!--对于internal storage不需要WRITE_EXTERNAL_STORAGE权限-->
@@ -27,13 +27,21 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".commonactivity.WebViewActivity" />
+        <activity android:name="com.fete.basemodel.commonactivity.WebViewActivity" />
         <!-- 下载完成之后自动安装 -->
-        <receiver android:name=".utils.InstallReceiver">
+        <receiver android:name="com.fete.basemodel.utils.InstallReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>
         </receiver>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="SaSyE7rFTqy0bsPH4OfL7KIuGdoIW4eU" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
     </application>
 
 </manifest>

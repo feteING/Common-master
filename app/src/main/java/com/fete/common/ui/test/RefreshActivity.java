@@ -14,10 +14,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
+import com.fete.basemodel.bannner.BGABanner;
 import com.fete.basemodel.bar.BaseToolbarHelper;
 import com.fete.basemodel.base.BaseActivity;
 import com.fete.basemodel.utils.ImageLoaderUtils;
 import com.fete.common.R;
+import com.fete.common.okhttp.bean.Model;
 import com.fete.common.ui.mine.SettingActivity;
 import com.gyf.barlibrary.ImmersionBar;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import common.feteing.commonutils.bannner.BGABanner;
+
 
 public class RefreshActivity extends BaseActivity {
 
@@ -153,95 +155,60 @@ public class RefreshActivity extends BaseActivity {
                 .init();
     }
 
-    private class Model {
-        int type;
-        String imageId;
-        int avatarId;
-        String name;
-        String nickname;
-
-        public String getImageId() {
-            return imageId;
-        }
-
-        public void setImageId(String imageId) {
-            this.imageId = imageId;
-        }
-
-        public int getAvatarId() {
-            return avatarId;
-        }
-
-        public void setAvatarId(int avatarId) {
-            this.avatarId = avatarId;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getNickname() {
-            return nickname;
-        }
-
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
-        }
-    }
 
     /**
      * 模拟数据
      */
     private ArrayList<Model> loadModels() {
         ArrayList<Model> list = new ArrayList();
-        Model model = new Model() {{
-            this.type = 1;
-            this.name = "但家香酥鸭";
-            this.nickname = "爱过那张脸";
-            this.imageId = "http://img3.imgtn.bdimg.com/it/u=323485060,4088130159&fm=26&gp=0.jpg";
-            this.avatarId = R.mipmap.image_avatar_1;
-        }};
+        Model.BinaryBean binaryBean = new Model.BinaryBean();
 
-        Model model1 = new Model() {{
-            this.type = 1;
-            this.name = "香菇蒸鸟蛋";
-            this.nickname = "淑女算个鸟";
-            this.imageId = "http://img4.imgtn.bdimg.com/it/u=2869658580,4194315062&fm=26&gp=0.jpg";
-            this.avatarId = R.mipmap.image_avatar_2;
-        }};
-        Model model2 = new Model() {{
-            this.type = 2;
-            this.name = "花溪牛肉粉";
-            this.nickname = "性感妩媚";
-            this.imageId = "http://img1.imgtn.bdimg.com/it/u=3725027306,1956362631&fm=26&gp=0.jpg";
-            this.avatarId = R.mipmap.image_avatar_3;
-        }};
+        Model model = new Model(1);
+        binaryBean.setName("但家香酥鸭");
+        binaryBean.setNickname("爱过那张脸");
+        binaryBean.setImageId("http://img3.imgtn.bdimg.com/it/u=323485060,4088130159&fm=26&gp=0.jpg");
+        binaryBean.setAvatarId(R.mipmap.image_avatar_1);
+        model.setBinary(binaryBean);
 
-        Model model3 = new Model() {{
-            this.type = 2;
-            this.name = "破酥包";
-            this.nickname = "一丝丝纯真";
-            this.imageId = "http://img0.imgtn.bdimg.com/it/u=925844297,3903738581&fm=26&gp=0.jpg";
-            this.avatarId = R.mipmap.image_avatar_4;
-        }};
-        Model model4 = new Model() {{
-            this.type = 1;
-            this.name = "盐菜饭";
-            this.nickname = "等着你回来";
-            this.imageId = "http://img1.imgtn.bdimg.com/it/u=1975208270,2539296753&fm=26&gp=0.jpg";
-            this.avatarId = R.mipmap.image_avatar_5;
-        }};
-        Model model5 = new Model() {{
-            this.type = 2;
-            this.name = "米豆腐";
-            this.nickname = "宝宝树人";
-            this.imageId = "http://img1.imgtn.bdimg.com/it/u=3277523591,4184176422&fm=26&gp=0.jpg";
-            this.avatarId = R.mipmap.image_avatar_6;
-        }};
+        Model model1 = new Model(1);
+        binaryBean = new Model.BinaryBean();
+        binaryBean.setName("香菇蒸鸟蛋");
+        binaryBean.setNickname("淑女算个鸟");
+        binaryBean.setImageId("http://img4.imgtn.bdimg.com/it/u=2869658580,4194315062&fm=26&gp=0.jpg");
+        binaryBean.setAvatarId(R.mipmap.image_avatar_2);
+        model1.setBinary(binaryBean);
+
+        Model model2 = new Model(1);
+        binaryBean = new Model.BinaryBean();
+        binaryBean.setName("花溪牛肉粉");
+        binaryBean.setNickname("性感妩媚");
+        binaryBean.setImageId("http://img1.imgtn.bdimg.com/it/u=3725027306,1956362631&fm=26&gp=0.jpg");
+        binaryBean.setAvatarId(R.mipmap.image_avatar_3);
+        model2.setBinary(binaryBean);
+
+        Model model3 = new Model(2);
+        binaryBean = new Model.BinaryBean();
+        binaryBean.setName("破酥包");
+        binaryBean.setNickname("一丝丝纯真");
+        binaryBean.setImageId("http://img0.imgtn.bdimg.com/it/u=925844297,3903738581&fm=26&gp=0.jpg");
+        binaryBean.setAvatarId(R.mipmap.image_avatar_4);
+        model3.setBinary(binaryBean);
+
+        Model model4 = new Model(2);
+        binaryBean = new Model.BinaryBean();
+        binaryBean.setName("盐菜饭");
+        binaryBean.setNickname("等着你回来");
+        binaryBean.setImageId("http://img1.imgtn.bdimg.com/it/u=1975208270,2539296753&fm=26&gp=0.jpg");
+        binaryBean.setAvatarId(R.mipmap.image_avatar_5);
+        model4.setBinary(binaryBean);
+
+        Model model5 = new Model(2);
+        binaryBean = new Model.BinaryBean();
+        binaryBean.setName("米豆腐");
+        binaryBean.setNickname("宝宝树人");
+        binaryBean.setImageId("http://img1.imgtn.bdimg.com/it/u=3277523591,4184176422&fm=26&gp=0.jpg");
+        binaryBean.setAvatarId(R.mipmap.image_avatar_6);
+        model5.setBinary(binaryBean);
 
         list.add(model);
         list.add(model1);
@@ -260,7 +227,7 @@ public class RefreshActivity extends BaseActivity {
             setMultiTypeDelegate(new MultiTypeDelegate<Model>() {
                 @Override
                 protected int getItemType(Model model) {
-                    return model.type;
+                    return model.getType();
                 }
             });
 
@@ -274,19 +241,21 @@ public class RefreshActivity extends BaseActivity {
 
             switch (helper.getItemViewType()) {
                 case 1:
-                    helper.setText(R.id.name, item.getName());
-                    helper.setText(R.id.nickname, item.getNickname());
-                    helper.setImageResource(R.id.avatar, item.getAvatarId());
+                    Model.BinaryBean binary = item.getBinary();
+                    helper.setText(R.id.name, binary.getName());
+                    helper.setText(R.id.nickname, binary.getNickname());
+                    helper.setImageResource(R.id.avatar, binary.getAvatarId());
                     ImageView image = helper.getView(R.id.image);
-                    ImageLoaderUtils.loadingImg(mContext, image, item.getImageId());
+                    ImageLoaderUtils.loadingImg(mContext, image, binary.getImageId());
 
                     break;
                 case 2:
-                    helper.setText(R.id.name, item.getName());
-                    helper.setText(R.id.nickname, item.getNickname());
-                    helper.setImageResource(R.id.avatar, item.getAvatarId());
+                    Model.BinaryBean binary2 = item.getBinary();
+                    helper.setText(R.id.name, binary2.getName());
+                    helper.setText(R.id.nickname, binary2.getNickname());
+                    helper.setImageResource(R.id.avatar, binary2.getAvatarId());
                     ImageView image2 = helper.getView(R.id.image);
-                    ImageLoaderUtils.loadingImg(mContext, image2, item.getImageId());
+                    ImageLoaderUtils.loadingImg(mContext, image2, binary2.getImageId());
                     break;
 
             }

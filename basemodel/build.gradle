@@ -71,7 +71,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.0'
     //eventbus
     compile 'org.greenrobot:eventbus:3.0.0'
-    //baseadapter https://github.com/hongyangAndroid/baseAdapter
+    //baseadapter https://github.com/hongyangAndroid/baseAdapter 万能adapter
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.41'
     //tab viewpager
     compile 'com.gxz.pagerslidingtabstrip:library:1.3.1'

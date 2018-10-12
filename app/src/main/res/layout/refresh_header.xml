@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <common.feteing.commonutils.bannner.BGABanner
+    <com.fete.basemodel.bannner.BGABanner
         android:id="@+id/banner_normal"
         style="@style/BannerDefaultStyle"
         android:scaleType="fitXY"

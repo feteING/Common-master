@@ -11,21 +11,22 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.fete.basemodel.location.LocationHelper;
-import com.jph.takephoto.app.TakePhoto;
-import com.jph.takephoto.model.TResult;
+import com.fete.basemodel.bannner.BGABanner;
 import com.fete.basemodel.base.BaseFragment;
 import com.fete.basemodel.dialog.base.LoaderDialog;
 import com.fete.basemodel.dialog.base.PromptDialog;
 import com.fete.basemodel.dialog.ios.BottomMenuDialog;
 import com.fete.basemodel.emptyview.EmptyLayout;
 import com.fete.basemodel.fragmenthelper.FragmentStack;
+import com.fete.basemodel.location.LocationHelper;
 import com.fete.basemodel.utils.LogTest;
 import com.fete.common.R;
 import com.fete.common.okhttp.business.BaseBusinessUtil;
 import com.fete.common.tools.event.NetStatusEvent;
 import com.fete.common.tools.helper.PhotoHelper;
 import com.fete.common.ui.mine.MineFragment;
+import com.jph.takephoto.app.TakePhoto;
+import com.jph.takephoto.model.TResult;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -35,7 +36,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import common.feteing.commonutils.bannner.BGABanner;
+
 
 /**
  * Created by llf on 2017/3/15.

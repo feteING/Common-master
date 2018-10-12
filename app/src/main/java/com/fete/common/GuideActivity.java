@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import common.feteing.commonutils.bannner.BGABanner;
-import common.feteing.commonutils.bannner.BGALocalImageSize;
+import com.fete.basemodel.bannner.BGABanner;
+import com.fete.basemodel.bannner.BGALocalImageSize;
+
 
 public class GuideActivity extends Activity {
 

@@ -95,6 +95,6 @@
 
     </RelativeLayout>
 
-    <View style="@style/top_line"></View>
+<!--    <View style="@style/top_line"></View>-->
 
 </LinearLayout>

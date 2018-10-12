@@ -2,6 +2,7 @@ package com.fete.common.ui;
 
 import android.content.Context;
 
+import com.fete.basemodel.bannner.BGABanner;
 import com.fete.basemodel.base.BaseFragment;
 import com.fete.basemodel.utils.LogTest;
 import com.fete.common.R;
@@ -11,7 +12,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
-import common.feteing.commonutils.bannner.BGABanner;
+
 
 /**
  * Created by llf on 2017/3/15.

@@ -1,1 +1,1 @@
-include ':app', ':basemodel', ':commonutils'
+include ':app', ':basemodel'

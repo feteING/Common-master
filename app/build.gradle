@@ -122,5 +122,5 @@ dependencies {
     compile 'com.android.support:support-annotations:22.2.0'
     //在网页上查看sp和数据库 adb forward tcp:8080 tcp:8080
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
-    compile project(':basemodel')
+    compile project(':baselib')
 }

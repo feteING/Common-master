@@ -12,9 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <com.fete.basemodel.scrollview.BounceScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            app:bounceDelay="1000"
+            app:damping="5">
 
             <LinearLayout
 
@@ -146,6 +148,7 @@
                         android:text="location" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -168,8 +171,9 @@
                     app:banner_transitionEffect="cube" />
             </LinearLayout>
 
-        </ScrollView>
+        </com.fete.basemodel.scrollview.BounceScrollView>
     </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/fl_container"

@@ -98,10 +98,6 @@
         <activity
             android:name="com.fete.common.ui.mine.SettingActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.fete.basemodel.image.BigImagePagerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/BigImageTheme" />
 
         <activity
             android:name="com.fete.common.ui.test.ToolBarActivity"
@@ -115,6 +111,14 @@
         <activity
             android:name="com.fete.common.ui.test.RefreshActivity"
             android:screenOrientation="portrait"></activity>
+
+
+        <!--微信回调-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

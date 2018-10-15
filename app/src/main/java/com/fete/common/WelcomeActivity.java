@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 
-import com.fete.basemodel.base.BaseActivity;
+import com.fete.common.base.BaseActivity;
 import com.fete.basemodel.utils.LogUtil;
 import com.fete.common.okhttp.DbService;
 

@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatDelegate;
 
 import com.fete.basemodel.R;
 import com.fete.basemodel.utils.CommonUtils;
-import com.fete.basemodel.utils.LogUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
@@ -19,7 +18,6 @@ import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -68,14 +66,12 @@ public class BaseApplication extends MultiDexApplication {
          * 第一个参数：应用程序上下文
          * 第二个参数：如果发现滑动返回后立即触摸界面时应用崩溃，请把该界面里比较特殊的 View 的 class 添加到该集合中，目前在库中已经添加了 WebView 和 SurfaceView
          */
-        BGASwipeBackHelper.init(this, null);
+        BGASwipeBackHelper.init(this, null);//滑动返回
 
         //检查内存泄漏
         refWatcher = apkInDebug ? LeakCanary.install(this) : RefWatcher.DISABLED;
         refWatcher = LeakCanary.install(this);
-        //bugly
-        CrashReport.initCrashReport(getApplicationContext(), "2b5ae88355", false);
-        LogUtil.init();
+
     }
 
     @Override

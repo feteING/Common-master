@@ -5,7 +5,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.fete.basemodel.bar.BaseToolbarHelper;
-import com.fete.basemodel.base.BaseActivity;
+import com.fete.common.base.BaseActivity;
 import com.fete.basemodel.scrollview.BounceScrollView;
 import com.fete.common.R;
 import com.fete.common.ui.mine.SettingActivity;

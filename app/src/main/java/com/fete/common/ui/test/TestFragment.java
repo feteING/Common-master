@@ -18,13 +18,14 @@ import com.fete.basemodel.dialog.base.PromptDialog;
 import com.fete.basemodel.dialog.ios.BottomMenuDialog;
 import com.fete.basemodel.emptyview.EmptyLayout;
 import com.fete.basemodel.fragmenthelper.FragmentStack;
-import com.fete.basemodel.location.LocationHelper;
 import com.fete.basemodel.utils.LogTest;
 import com.fete.common.R;
 import com.fete.common.okhttp.business.BaseBusinessUtil;
 import com.fete.common.tools.event.NetStatusEvent;
 import com.fete.common.tools.helper.PhotoHelper;
 import com.fete.common.ui.mine.MineFragment;
+import com.feteing.sdklib.location.LocationHelper;
+import com.feteing.sdklib.umeng.UmengHelper;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.model.TResult;
 
@@ -60,6 +61,7 @@ public class TestFragment extends BaseFragment {
     //空布局
     @Bind(R.id.llCenter)
     public LinearLayout mLlCenter; //根布局
+
     private EmptyLayout mEmptyLayout;
 
     @Bind(R.id.show_empty)
@@ -97,6 +99,12 @@ public class TestFragment extends BaseFragment {
     @Bind(R.id.refresh)
     public Button refresh;
 
+    @Bind(R.id.share)
+    public Button share;
+
+    @Bind(R.id.three)
+    public Button three;
+
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(NetStatusEvent netStatusEvent) {
@@ -126,7 +134,27 @@ public class TestFragment extends BaseFragment {
         initScrollView();
         initLocation();
         initRefresh();
+        initShare();
+        initThree();
 
+    }
+
+    private void initThree() {
+        three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UmengHelper.getInstance().ThreeLoginByType(getActivity(), 3);
+            }
+        });
+    }
+
+    private void initShare() {
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UmengHelper.getInstance().umengShare(getActivity());
+            }
+        });
     }
 
     private void initRefresh() {
@@ -394,6 +422,5 @@ public class TestFragment extends BaseFragment {
         super.takeSuccess(result);
         LogTest.e(result.getImage().getOriginalPath() + "");
     }
-
 
 }

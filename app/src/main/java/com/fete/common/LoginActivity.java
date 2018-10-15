@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.fete.basemodel.base.BaseActivity;
+import com.fete.common.base.BaseActivity;
 import com.fete.common.ui.login.LoginFragment;
 import com.fete.common.ui.login.RegistFragment;
 

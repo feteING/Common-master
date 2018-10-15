@@ -16,7 +16,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
 import com.fete.basemodel.bannner.BGABanner;
 import com.fete.basemodel.bar.BaseToolbarHelper;
-import com.fete.basemodel.base.BaseActivity;
+import com.fete.common.base.BaseActivity;
 import com.fete.basemodel.utils.ImageLoaderUtils;
 import com.fete.common.R;
 import com.fete.common.okhttp.bean.Model;

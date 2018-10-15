@@ -4,7 +4,7 @@ import android.view.ViewGroup;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.fete.basemodel.bar.BaseToolbarHelper;
-import com.fete.basemodel.base.BaseActivity;
+import com.fete.common.base.BaseActivity;
 import com.fete.common.R;
 import com.fete.common.ui.mine.SettingActivity;
 

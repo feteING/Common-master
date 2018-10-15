@@ -1,21 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fete.basemodel">
-    <!--敏感权限-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--对于internal storage不需要WRITE_EXTERNAL_STORAGE权限-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <!--获得基站位置信息-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--允许程序读取或写入系统设置-->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <!--网络变化-->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <supports-screens
         android:largeScreens="true"
@@ -35,13 +19,7 @@
             </intent-filter>
         </receiver>
 
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="SaSyE7rFTqy0bsPH4OfL7KIuGdoIW4eU" />
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" />
+
     </application>
 
 </manifest>

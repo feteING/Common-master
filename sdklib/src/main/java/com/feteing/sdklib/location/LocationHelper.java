@@ -1,7 +1,6 @@
-package com.fete.basemodel.location;
+package com.feteing.sdklib.location;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -10,14 +9,12 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
-import com.fete.basemodel.R;
-import com.fete.basemodel.utils.LogTest;
-import com.fete.basemodel.utils.ToastUtil;
 
 import java.util.List;
 
 /**
  * Created by A on 2018/10/10.
+ * LocationHelper.getInstance().locationStart(context);
  */
 
 public class LocationHelper {
@@ -49,12 +46,14 @@ public class LocationHelper {
     private boolean isShowOnlyOne = true;//只显示一次
 
     public LocationClient mLocationClient = null;
-    private MyLocationListenerAddress myListener = new MyLocationListenerAddress();
+    private MyLocationListenerAddress myListener;
 
     public void locationStart(Context context) {
         mLocationClient = new LocationClient(context);//声明LocationClient类
-        mLocationClient.registerLocationListener(myListener);//注册监听函数
-
+        if (myListener == null) {
+            myListener = new MyLocationListenerAddress();
+            mLocationClient.registerLocationListener(myListener);//注册监听函数
+        }
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);
         //高精度定位模式  LocationMode.Hight_Accuracy：这种定位模式下，会同时使用网络定位和GPS定位，优先返回最高精度的定位结果；
@@ -76,8 +75,9 @@ public class LocationHelper {
         option.SetIgnoreCacheException(false);//可选，默认false，设置是否收集CRASH信息，默认收集
         option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤GPS仿真结果，默认需要
         mLocationClient.setLocOption(option);
-
         mLocationClient.start();
+
+
     }
 
 
@@ -202,20 +202,9 @@ public class LocationHelper {
             String district = location.getDistrict();    //获取区县
             String street = location.getStreet();    //获取街道信息
             String str = "location___" + addr + "_" + country + "_" + province + "_" + city + "_" + district + "_" + street;
-            LogTest.e("common___" + addr + "_" + country + "_" + province + "_" + city + "_" + district + "_" + street);
-            showToast(str);
+            Log.e("====<location", str);
+
 
         }
     }
-
-    /**
-     * 显示普通的toast
-     *
-     * @return
-     */
-    public void showToast(String str) {
-        ToastUtil.sToastUtil.shortDuration(str).setToastBackground(Color.WHITE, R.drawable.toast_radius).show();
-    }
-
-
 }

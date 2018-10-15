@@ -23,6 +23,7 @@ import com.fete.common.okhttp.DbService;
 import com.fete.common.okhttp.NetService;
 import com.fete.common.okhttp.callback.BaseCallBack;
 import com.fete.common.tools.event.NetStatusEvent;
+import com.feteing.sdklib.umeng.UmengHelper;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -188,6 +189,7 @@ public class LoginFragment extends BaseFragment {
                             }
                         }, 1500);
                         DbService.setUserNamePwd(context, phone, passwords);
+                        UmengHelper.umengUserLogin(phone);//登录统计
 
                     }
 

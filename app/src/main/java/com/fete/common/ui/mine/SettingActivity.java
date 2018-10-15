@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.fete.basemodel.base.BaseActivity;
+import com.fete.common.base.BaseActivity;
 import com.fete.common.App;
 import com.fete.common.R;
 import com.fete.common.WelcomeActivity;

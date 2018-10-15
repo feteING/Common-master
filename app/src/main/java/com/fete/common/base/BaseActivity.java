@@ -1,4 +1,4 @@
-package com.fete.basemodel.base;
+package com.fete.common.base;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,13 +19,16 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import com.gyf.barlibrary.ImmersionBar;
 import com.fete.basemodel.R;
+import com.fete.basemodel.base.BaseApplication;
 import com.fete.basemodel.dialog.DialogTools;
 import com.fete.basemodel.dialog.base.LoaderDialog;
 import com.fete.basemodel.utils.AppManager;
 import com.fete.basemodel.utils.LogTest;
 import com.fete.basemodel.utils.ToastUtil;
+import com.feteing.sdklib.umeng.UmengHelper;
+import com.gyf.barlibrary.ImmersionBar;
+import com.umeng.socialize.UMShareAPI;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -90,11 +93,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
     @Override
     protected void onResume() {
         super.onResume();
+        UmengHelper.umengOnResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        UmengHelper.umengOnPause(this);
     }
 
     @Override
@@ -123,6 +128,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
             mImmersionBar.destroy();  //在BaseActivity里销毁
         }
         BaseApplication.getRefWatcher(this).watch(this);
+        try {
+            UMShareAPI.get(this).release();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void startActivity(Class<?> cls) {
@@ -246,6 +256,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BGASwipe
      */
     public interface PermissionListener {
         void onGranted();
+
         void onDenied(List<String> deniedPermissions);
     }
 

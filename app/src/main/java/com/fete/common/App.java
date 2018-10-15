@@ -5,6 +5,9 @@ import android.os.StrictMode;
 
 import com.bumptech.glide.Glide;
 import com.fete.basemodel.base.BaseApplication;
+import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
 
 /**
  * Created by llf on 2017/3/10.
@@ -14,9 +17,31 @@ public class App extends BaseApplication {
     //用于判断应用是否被强杀
     public static int mAppStatus = -1;
 
+    {
+        PlatformConfig.setWeixin("wxcc653fe774b6e168", "c321015f332c874d0fbb1b716df1668e");
+        //豆瓣RENREN平台目前只能在服务器端配置
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+    }
+
+
     @Override
     public void onCreate() {
         super.onCreate();
+        initFix();//兼容
+        initSdk();//sdk
+    }
+
+    private void initSdk() {
+        //bugly
+        CrashReport.initCrashReport(getApplicationContext(), "2b5ae88355", false);
+        //友盟统计
+        UMConfigure.init(this, "5bc00a42f1f556a052000087", "", UMConfigure.DEVICE_TYPE_PHONE, null);
+//        UMConfigure.setLogEnabled(true);
+
+    }
+
+    private void initFix() {
         /**
          * 解决7.0无法使用file://格式的URI的第二种方法
          */

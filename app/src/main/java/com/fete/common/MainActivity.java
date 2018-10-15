@@ -9,16 +9,17 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.gyf.barlibrary.ImmersionBar;
-import com.fete.basemodel.base.BaseActivity;
 import com.fete.basemodel.base.BaseFragment;
 import com.fete.basemodel.base.BaseFragmentAdapter;
 import com.fete.basemodel.utils.DownloadUtil;
 import com.fete.basemodel.utils.LogTest;
 import com.fete.basemodel.utils.NetUtil;
+import com.fete.common.base.BaseActivity;
 import com.fete.common.tools.event.NetStatusEvent;
 import com.fete.common.ui.mine.MineFragment;
 import com.fete.common.ui.test.TestFragment;
+import com.gyf.barlibrary.ImmersionBar;
+import com.umeng.socialize.UMShareAPI;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -121,6 +122,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     protected void onDestroy() {
         super.onDestroy();
         removeNetListener();//移除网络监听
+        try {
+            UMShareAPI.get(this).release();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -196,6 +202,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         //分发到fragment的onActivityResult，用于解决qq分享接收不到回调
         BaseFragment fragment = fragments[3];
         fragment.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
     /**

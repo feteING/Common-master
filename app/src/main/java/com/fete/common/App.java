@@ -9,6 +9,9 @@ import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
 
+import cn.jpush.android.api.JPushInterface;
+
+
 /**
  * Created by llf on 2017/3/10.
  */
@@ -38,7 +41,9 @@ public class App extends BaseApplication {
         //友盟统计
         UMConfigure.init(this, "5bc00a42f1f556a052000087", "", UMConfigure.DEVICE_TYPE_PHONE, null);
 //        UMConfigure.setLogEnabled(true);
-
+        //jpush推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 
     private void initFix() {
